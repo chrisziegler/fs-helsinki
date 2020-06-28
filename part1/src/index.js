@@ -1,72 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-const Header = ({ name }) => (
-  <div>
-    <h1>{name}</h1>
-  </div>
-);
-
-const Content = ({ parts }) => {
-  const [part1, part2, part3] = parts;
-  return (
-    <div>
-      <Part name={part1.name} exercises={part1.exercises} />
-      <Part name={part2.name} exercises={part2.exercises} />
-      <Part name={part3.name} exercises={part3.exercises} />
-    </div>
-  );
-};
-
-const Part = ({ name, exercises }) => {
-  console.log(name, exercises);
-  return (
-    <div>
-      <p>
-        {name} {exercises}
-      </p>
-    </div>
-  );
-};
-
-const Total = ({ parts }) => {
-  const [part1, part2, part3] = parts;
-  return (
-    <div>
-      <p>
-        Number of exercises:{' '}
-        {part1.exercises + part2.exercises + part3.exercises}
-      </p>
-    </div>
-  );
-};
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10,
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 2,
-      },
-      {
-        name: 'State of a component',
-        exercises: 14,
-      },
-    ],
-  };
+  const [counter, setCounter] = useState(0)
 
+  const increaseByOne = () => setCounter(counter + 1)
+  const setToZero = () => setCounter(0)
+
+  console.log(`rendering...`, counter)
   return (
     <div>
-      <Header name={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
+      <div>{counter}</div>
+      <button onClick={increaseByOne}>plus</button>
+      <button onClick={setToZero}>zero</button>
     </div>
-  );
-};
+  )
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))
