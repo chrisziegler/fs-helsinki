@@ -1,9 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## fs-helsinki
 
-### courseinfo
+### Part 1 - Courseinfo
 
-Exercises 1.1 - 1.5
-Run npm install
+# Exercises 1.1 - 1.5
+
+run npm install
 npm start in project directory
