@@ -1,8 +1,9 @@
-## fs-helsinki
+### fs-helsinki
 
-### Part 1 - Anecdotes
+# Part 1 - Anecdotes
 
-# Exercise 1.12\* - 1.14\*
+## Exercise 1.12\* - 1.14\*
 
 run npm install
+
 npm start (in projected directory)
