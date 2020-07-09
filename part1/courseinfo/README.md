@@ -4,6 +4,8 @@
 
 ## Exercises 1.1 - 1.5
 
-run npm install
+run (in project directory)  
 
-npm start in project directory
+    npm install  
+
+    npm start  

@@ -4,6 +4,8 @@
 
 ## Exercise 1.12\* - 1.14\*
 
-run npm install
+run (in project directory)  
 
-npm start (in projected directory)
+    npm install  
+
+    npm start  

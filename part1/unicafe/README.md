@@ -4,6 +4,9 @@
 
 ## Exercises 1.6 - 1.11\*
 
-run npm install
+run (in project directory)  
 
-npm start (in project directory)
+    npm install  
+
+    npm start  
+
