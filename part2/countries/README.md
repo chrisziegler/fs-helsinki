@@ -1,8 +1,8 @@
 ### fs-helsinki
 
-# Part 2 - Course Information
+# Part 2 - \*Countries
 
-## Contiuation of Note taking app walkthrough
+## Optional Countries App Exercises for Part 2
 
 run (in project directory)
 
