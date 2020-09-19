@@ -1,10 +1,11 @@
 import React from 'react'
+import Weather from './Weather'
 
-const CountryView = ({ countries }) => {
+const CountryView = ({ countries, capitalCity }) => {
   return (
     <ul>
       {countries.map((country) => (
-        <div key={country}>
+        <div key={country.name}>
           <h2>{country.name}</h2>
           capital: {country.capital}
           <br />
@@ -14,7 +15,7 @@ const CountryView = ({ countries }) => {
           <ul style={{ listStyle: 'disc inside' }}>
             {country.languages.map((language) => (
               <li
-                key={country.name}
+                key={language.name}
                 style={{ marginLeft: '1rem' }}
               >
                 {language.name}
@@ -28,6 +29,7 @@ const CountryView = ({ countries }) => {
           />
         </div>
       ))}
+      <Weather capital={capitalCity} />
     </ul>
   )
 }

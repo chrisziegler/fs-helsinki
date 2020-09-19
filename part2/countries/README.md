@@ -6,6 +6,10 @@
 
 run (in project directory)
 
+requires a key for openweather api
+
+place in .env file in root  
+
     npm install
 
     npm start

@@ -9,25 +9,37 @@ export default ({
 }) => {
   return (
     <form onSubmit={addContact}>
-      <div>
-        name:
-        <input
-          type="text"
-          value={newName}
-          onChange={(e) => setNewName(e.target.value)}
-        />
-      </div>
-      <div>
-        number:
-        <input
-          type="text"
-          value={newNumber}
-          onChange={(e) => setNewNumber(e.target.value)}
-        />
-      </div>
-      <div>
-        <button type="submit">add</button>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>name:</td>
+            <td>
+              {' '}
+              <input
+                type="text"
+                value={newName}
+                onChange={e => setNewName(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>number:</td>
+            <td>
+              <input
+                type="text"
+                value={newNumber}
+                onChange={e => setNewNumber(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="submit">add</button>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </form>
   )
 }

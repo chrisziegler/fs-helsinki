@@ -9,10 +9,14 @@
 db.json
 
 # testing
-/coverage
+weather-data.js
+test.js
 
 # production
 /build
+
+# added file
+.env
 
 # misc
 .DS_Store
