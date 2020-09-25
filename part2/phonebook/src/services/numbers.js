@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:3001/persons'
+const baseURL = '/api/persons'
 
 // extracted request methods take the http request object return response data
 
