@@ -1,2 +1,10 @@
 node modules/
-/courseinfo
+build/
+
+
+
+# temporarily keep myself from commiting index.js with password
+
+
+#keep important
+.env

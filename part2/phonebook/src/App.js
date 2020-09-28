@@ -84,6 +84,7 @@ const App = () => {
   }
 
   const deleteContact = id => {
+    const { name } = persons.find(person => person.id === id)
     if (
       !window.confirm(`Do you really want to delete message id# ${id}?`)
     ) {
@@ -93,6 +94,10 @@ const App = () => {
       numberService.remove(id).then(res => {
         numberService.getAll().then(updatedNumbers => {
           setPersons(updatedNumbers)
+          setSuccessMessage(`Removed ${name}`)
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 5000)
         })
       })
     }
