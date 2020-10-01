@@ -71,15 +71,28 @@ const App = () => {
         name: newName,
         number: newNumber,
       }
-      numberService.create(newContactObject).then(returnedNumber => {
-        setPersons(persons.concat(returnedNumber))
-        setSuccessMessage(`Added ${returnedNumber.name}`)
-        setTimeout(() => {
-          setSuccessMessage(null)
-        }, 5000)
-        setNewName('')
-        setNewNumber('')
-      })
+      numberService
+        .create(newContactObject)
+        .then(returnedNumber => {
+          setPersons(persons.concat(returnedNumber))
+          setSuccessMessage(`Added ${returnedNumber.name}`)
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 5000)
+          setNewName('')
+          setNewNumber('')
+        })
+        .catch(error => {
+          // console.log(
+          //   `error.response.data: ${JSON.stringify(error.response.data)}`,
+          // )
+          setErrorMessage(JSON.stringify(error.response.data))
+        })
+      setNewName('')
+      setNewNumber('')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
     }
   }
 

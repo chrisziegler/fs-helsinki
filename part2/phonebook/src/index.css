@@ -66,27 +66,29 @@ li {
 
 .notifications-wrapper {
   background: #fcfaf3;
-  height: 2.1em;
+  height: 3em;
   padding: 0.5em 0 0 0;
 }
 
 .notification-success {
   background-color: silver;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
   color: seagreen;
-  padding: 0.2em;
+  padding: 0.15em;
   padding-left: 1em;
-  border: 2px solid seagreen;
+  margin: 0 1em 0 1em;
+  border: 1px solid seagreen;
 }
 .notification-error {
   background-color: silver;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
   color: red;
-  padding: 0.2em;
+  padding: 0.15em;
   padding-left: 1em;
-  border: 2px solid red;
+  margin: 0 1em 0 1em;
+  border: 1px solid red;
 }
 
 form {
