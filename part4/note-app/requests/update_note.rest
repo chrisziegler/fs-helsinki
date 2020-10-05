@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/notes/5f6d724ed1628b326cbe989b
+Content-Type: application/json
+
+{
+  "content": "Internet is HardER",
+  "important": false
+}
