@@ -1,6 +1,6 @@
 # development
 .env
-/playground
+playground/
 node_modules/
 courseinfo2/
 courseinfo3/
