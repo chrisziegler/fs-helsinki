@@ -2,10 +2,10 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Found a great search site",
-  "author": "Chris Ziegler",
-  "url": "https://www.google.com",
-  "likes": 5
+  "title": "Trump is going to prison ",
+  "author": "Joe Biden",
+  "url": "https://www.electjoebiden.com",
+  "likes": 200
 }
 
 
