@@ -1,2 +1,5 @@
 ## Blog List App - Part 4
-<p style="color: green;">exercises 4.1 -4.2</p>
+<ul>
+<li style="color: darkseagreen;">exercises 4.1 -4.2</li>
+<li style="color: mediumseagreen;">exercises 4.3 -4.7</li>
+</ul>
