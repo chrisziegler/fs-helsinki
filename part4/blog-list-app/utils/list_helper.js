@@ -29,6 +29,7 @@ const favoriteBlog = array => {
 }
 
 const mostBlogs = function (blogs) {
+  if (blogs.length === 0) return 0
   const most = _(blogs)
     .groupBy('author')
     .map((items, author) => {
@@ -40,4 +41,11 @@ const mostBlogs = function (blogs) {
   return most
 }
 
-module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs }
+const mostLikes = function (blogs) {
+  if (blogs.length === 0) return 0
+  const max_object = _.maxBy(blogs, o => o.likes)
+  const { _id, title, url, __v, ...rest } = max_object
+  return rest
+}
+
+module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes }
