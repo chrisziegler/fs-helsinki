@@ -2,13 +2,12 @@ const notesRouter = require('express').Router()
 const Note = require('../models/note')
 
 // GET route -- fetch all notes
-notesRouter.get('/', (req, res) => {
-  Note.find({}).then(notes => {
-    res.json(notes)
-  })
+notesRouter.get('/', async (req, res) => {
+  const notes = await Note.find({})
+  res.json(notes)
 })
 
-// GET route -- fetch individual note
+// old Promises GET route -- fetch individual note
 notesRouter.get('/:id', (request, response, next) => {
   Note.findById(request.params.id)
     .then(note => {
@@ -20,6 +19,20 @@ notesRouter.get('/:id', (request, response, next) => {
     })
     .catch(error => next(error))
 })
+
+// Async/Await GET route -- fetch individual note
+// notesRouter.get('/:id', async (request, response, next) => {
+//   try {
+//     const note = await Note.findById(request.params.id)
+//     if (note) {
+//       response.json(note)
+//     } else {
+//       response.status(404).end()
+//     }
+//   } catch (exception) {
+//     next(exception)
+//   }
+// })
 
 // POST route -- add a note
 notesRouter.post('/', (request, response, next) => {

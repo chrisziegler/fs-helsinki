@@ -1,5 +1,10 @@
 const info = (...params) => {
-  console.log(...params)
+  if (
+    process.env.NODE_ENV !== 'test' &&
+    process.env.NODE_ENV !== 'test-local'
+  ) {
+    console.log(...params)
+  }
 }
 
 const error = (...params) => {
