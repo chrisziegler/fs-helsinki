@@ -2,10 +2,9 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Trump is going to prison ",
+  "title": "Trump is going to lose",
   "author": "Joe Biden",
-  "url": "https://www.electjoebiden.com",
-  "likes": 200
+  "url": "https://www.electjoebiden.com"
 }
 
 
