@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "nodemon .",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "test:localDb": "cross-env NODE_ENV=test-local jest --verbose --runInBand"
   },
   "keywords": [],
   "author": "",

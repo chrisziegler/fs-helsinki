@@ -2,9 +2,10 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Trump is going to lose",
+  "title": "Trump is going to lose PA",
   "author": "Joe Biden",
-  "url": "https://www.electjoebiden.com"
+  "url": "https://www.electjoebiden.com",
+  "likes": 500
 }
 
 
