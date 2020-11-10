@@ -4,7 +4,10 @@ const User = require('../models/user')
 
 // GET route -- fetch all notes
 notesRouter.get('/', async (req, res) => {
-  const notes = await Note.find({})
+  const notes = await Note.find({}).populate('user', {
+    username: 1,
+    name: 1,
+  })
   res.json(notes)
 })
 
@@ -50,7 +53,7 @@ notesRouter.put('/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-// Async/Await DELETE route -- delete a note
+// DELETE route -- delete a note
 notesRouter.delete('/:id', async (request, response) => {
   await Note.findByIdAndRemove(request.params.id)
   response.status(204).end()
