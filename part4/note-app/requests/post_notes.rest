@@ -2,6 +2,7 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-  "content": "to JSON bullshit",
-  "important": true
+  "content": "This is username root! I have no name property, but it will be SuperUser",
+  "important": true,
+  "userId": "5faa420322482100b04e6a72"
 }
