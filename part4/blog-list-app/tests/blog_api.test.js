@@ -1,13 +1,16 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
+const bcrypt = require('bcrypt')
 const app = require('../app')
 const api = supertest(app)
 const Blog = require('../models/blog')
+const User = require('../models/user')
 const {
   initialBlogs,
   newBlog,
   missingLikesBlog,
   blogsInDb,
+  usersInDb,
   updatedBlog,
 } = require('./test_helper')
 
@@ -88,6 +91,41 @@ describe('UPDATING BLOG POST.', () => {
     const likesAfter = blogsAfter[0].likes
     expect(likesAfter).toBe(likesBefore + 1)
     expect(blogAfterId).toBe(blogToViewId)
+  })
+})
+
+//...
+
+describe('WHEN THERE IS INITIALLY 1 USER IN DB', () => {
+  beforeEach(async () => {
+    await User.deleteMany({})
+
+    const passwordHash = await bcrypt.hash('sekret', 10)
+    const user = new User({ username: 'root', passwordHash })
+
+    await user.save()
+  })
+
+  test('creation succeeds with a fresh username', async () => {
+    const usersAtStart = await usersInDb()
+
+    const newUser = {
+      username: 'chris',
+      name: 'Chris Ziegler',
+      password: 'dnews123',
+    }
+
+    await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    const usersAtEnd = await usersInDb()
+    expect(usersAtEnd).toHaveLength(usersAtStart.length + 1)
+
+    const usernames = usersAtEnd.map(u => u.username)
+    expect(usernames).toContain(newUser.username)
   })
 })
 
