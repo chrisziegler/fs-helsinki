@@ -1,9 +1,10 @@
-PUT http://localhost:3003/api/blogs/5fa47644bb352c4038dfcb8d
+PUT http://localhost:3003/api/blogs/5fc30da9e388f63844899ac9
 Content-Type: application/json
 
 {
   "title": "Trump is going to lose PA, NV, AZ, and GA",
   "author": "Joe Biden",
   "url": "https://www.electjoebiden.com",
-  "likes": 9000
+  "likes": 100000,
+  "userId": "5fb6cf1e55f4a01414708e8c"
 }

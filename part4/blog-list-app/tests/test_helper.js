@@ -21,6 +21,7 @@ const newBlog = {
   author: 'Bozo the Clown',
   url: 'https://www.goolge.com',
   likes: 5,
+  userId: '5fc2fed27f872a18ec188e3e',
 }
 
 const missingLikesBlog = {

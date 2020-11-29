@@ -2,10 +2,12 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Trump is going to lose PA",
-  "author": "Joe Biden",
+  "title": "Does this still work after express-async-errors?",
+  "author": "Jim Carey",
   "url": "https://www.electjoebiden.com",
-  "likes": 500
+  "likes": 150,
+  "userId": "5fb6cf1e55f4a01414708e8c"
+"
 }
 
 
