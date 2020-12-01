@@ -2,12 +2,11 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Does this still work after express-async-errors?",
-  "author": "Jim Carey",
+  "title": "Test Message",
+  "author": "unknown",
   "url": "https://www.electjoebiden.com",
-  "likes": 150,
+  "likes": 10,
   "userId": "5fb6cf1e55f4a01414708e8c"
-"
 }
 
 

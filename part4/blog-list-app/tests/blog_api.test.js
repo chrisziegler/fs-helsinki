@@ -33,7 +33,7 @@ describe('WHEN THERE ARE INITIALLY SOME BLOGS SAVED', () => {
     response.body.map(r => expect(r.id).toBeDefined())
   })
 })
-describe('ADDING NEW BLOGS', () => {
+describe.skip('ADDING NEW BLOGS', () => {
   test('posts submitted with all required properties are successful', async () => {
     const blogsAtStart = await blogsInDb()
 
@@ -75,7 +75,7 @@ describe('DELETING BLOGS', () => {
   })
 })
 
-describe('UPDATING BLOG POST.', () => {
+describe.skip('UPDATING BLOG POST.', () => {
   test('blog post should update # of likes, return status-200, and retain id', async () => {
     const blogsBefore = await blogsInDb()
     const blogToViewId = blogsBefore[0].id
@@ -96,16 +96,12 @@ describe('UPDATING BLOG POST.', () => {
 
 //...
 
-describe('WHEN THERE IS INITIALLY 1 USER IN DB', () => {
+describe('TESTING USERS - INITIALLY 1 USER IN DB', () => {
   beforeEach(async () => {
     await User.deleteMany({})
 
     const passwordHash = await bcrypt.hash('sekret', 10)
-    const user = new User({
-      name: 'Admin',
-      username: 'root',
-      passwordHash,
-    })
+    const user = new User({ username: 'root', passwordHash })
 
     await user.save()
   })
@@ -130,6 +126,50 @@ describe('WHEN THERE IS INITIALLY 1 USER IN DB', () => {
 
     const usernames = usersAtEnd.map(u => u.username)
     expect(usernames).toContain(newUser.username)
+  })
+
+  test('creation fails with proper statuscode and message if username already taken', async () => {
+    const usersAtStart = await usersInDb()
+
+    const newUser = {
+      username: 'root',
+      name: 'Superuser',
+      password: 'salainen',
+    }
+
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    expect(result.body.error).toContain('`username` to be unique')
+
+    const usersAtEnd = await usersInDb()
+    expect(usersAtEnd).toHaveLength(usersAtStart.length)
+  })
+
+  test('invalid user not created when username < 3 characters', async () => {
+    const usersAtStart = await usersInDb()
+
+    await api
+      .post('/api/users')
+      .send({ username: 'sh', password: '12345' })
+      .expect(400)
+
+    const usersAtEnd = await usersInDb()
+    expect(usersAtEnd).toHaveLength(usersAtStart.length)
+  })
+  test('invalid user not created when password < 3 characters', async () => {
+    const usersAtStart = await usersInDb()
+
+    await api
+      .post('/api/users')
+      .send({ username: 'invalidUser', password: '12' })
+      .expect(400)
+
+    const usersAtEnd = await usersInDb()
+    expect(usersAtEnd).toHaveLength(usersAtStart.length)
   })
 })
 
