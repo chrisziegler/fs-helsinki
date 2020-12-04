@@ -1,6 +1,16 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
 const User = require('../models/user')
+const jwt = require('jsonwebtoken')
+
+// JWT
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+    return authorization.substring(7)
+  }
+  return null
+}
 
 // GET - fetch all blogs
 blogsRouter.get('/', async (request, response) => {
@@ -12,12 +22,18 @@ blogsRouter.get('/', async (request, response) => {
 })
 
 // POST - add new blog post
-blogsRouter.post('/', async (request, response, next) => {
+blogsRouter.post('/', async (request, response) => {
   const body = request.body
+  const token = getTokenFrom(request)
+  const decodedToken = jwt.verify(token, process.env.secret)
+
+  if (!token || !decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+  }
   if (!body.title && !body.author) {
     return await response.status(400).end()
   }
-  const user = await User.findById(body.userId)
+  const user = await User.findById(decodedToken.id)
   const blog = await new Blog({
     likes: body.likes,
     title: body.title,
@@ -34,7 +50,7 @@ blogsRouter.post('/', async (request, response, next) => {
 })
 
 // PUT - update blog post
-blogsRouter.put('/:id', async (request, response, next) => {
+blogsRouter.put('/:id', async (request, response) => {
   const body = request.body
   const blog = {
     title: body.title,

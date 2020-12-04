@@ -1,0 +1,11 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization:  bearer 
+
+{
+  "title": "A blog post made with json web token authorization",
+  "author": "Chris Ziegler's notes",
+  "url": "https://www.gratuitousgraphics.com"
+}
+
+
