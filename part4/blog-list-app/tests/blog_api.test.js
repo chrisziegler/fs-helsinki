@@ -102,8 +102,15 @@ describe('TESTING USERS - INITIALLY 1 USER IN DB', () => {
 
     const passwordHash = await bcrypt.hash('sekret', 10)
     const user = new User({ username: 'root', passwordHash })
+    const passwordHash2 = await bcrypt.hash('abc123', 10)
+    const user2 = new User({
+      username: 'ChrisZ',
+      name: 'Chris Ziegler',
+      passwordHash,
+    })
 
     await user.save()
+    await user2.save()
   })
 
   test('creation succeeds with a fresh username', async () => {
