@@ -16,17 +16,16 @@ const initialBlogs = [
   },
 ]
 
-const newBlog = {
-  title: 'This is sad',
-  author: 'Bozo the Clown',
-  url: 'https://www.goolge.com',
-  likes: 5,
-  userId: '5fc2fed27f872a18ec188e3e',
-}
+// const newBlog = {
+//   title: 'This is sad',
+//   author: 'Bozo the Clown',
+//   url: 'https://www.goolge.com',
+//   likes: 5,
+// }
 
 const missingLikesBlog = {
   title: 'Something is missing',
-  author: 'Elon Musk',
+  author: 'Chris Ziegler',
   url: 'https://www.tesla.com',
 }
 
@@ -48,7 +47,6 @@ usersInDb = async () => {
 
 module.exports = {
   initialBlogs,
-  newBlog,
   missingLikesBlog,
   blogsInDb,
   usersInDb,
