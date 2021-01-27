@@ -1,0 +1,58 @@
+{
+  "notes": [
+    {
+      "content": "HTML is easy",
+      "date": "2019-05-30T17:30:31.098Z",
+      "important": true,
+      "id": 1
+    },
+    {
+      "content": "Browser can execute only JavaScript",
+      "date": "2019-05-30T18:39:34.091Z",
+      "important": true,
+      "id": 2
+    },
+    {
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "date": "2019-05-30T19:20:14.298Z",
+      "important": true,
+      "id": 3
+    },
+    {
+      "content": "JavaScript Rules!",
+      "date": "2020-08-07T05:04:44.790Z",
+      "important": false,
+      "id": 4
+    },
+    {
+      "content": "POSTing to json-server via axios",
+      "date": "2020-08-07T05:30:14.481Z",
+      "important": true,
+      "id": 5
+    },
+    {
+      "content": "Jimi is GOAT",
+      "date": "2020-08-07T07:05:23.906Z",
+      "important": true,
+      "id": 6
+    },
+    {
+      "content": "SRV is good too!",
+      "date": "2020-08-22T15:16:35.211Z",
+      "important": false,
+      "id": 7
+    },
+    {
+      "content": "Mark Knopfler is a God",
+      "date": "2020-08-22T15:44:47.041Z",
+      "important": false,
+      "id": 8
+    },
+    {
+      "content": "Getting ready for Part 3",
+      "date": "2020-09-19T05:59:25.134Z",
+      "important": false,
+      "id": 9
+    }
+  ]
+}

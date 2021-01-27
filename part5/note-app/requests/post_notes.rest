@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization:  bearer 
+
+{
+  "content": "I like to post a lot of notes",
+  "important": true
+}
