@@ -39,6 +39,7 @@ const App = () => {
     // parameters passed from state
     try {
       const user = await loginService.login({ username, password })
+      noteService.setToken(user.token)
       setUser(user)
       setUsername('')
       setPassword('')
@@ -126,8 +127,14 @@ const App = () => {
         <h1>Notes</h1>
         <Notification message={errorMessage} />
 
-        {user === null && loginForm()}
-        {user !== null && noteForm()}
+        {user === null ? (
+          loginForm()
+        ) : (
+          <div>
+            <p>{user.name} logged-in</p>
+            {noteForm()}
+          </div>
+        )}
 
         <button className="toggle" onClick={() => setShowAll(!showAll)}>
           show {showAll ? 'important' : 'all'}
