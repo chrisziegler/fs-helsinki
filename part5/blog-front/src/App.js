@@ -7,7 +7,11 @@ import './App.css'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
-  const [newBlog, setNewBlog] = useState('')
+  const [form, setForm] = useState({
+    title: '',
+    author: '',
+    url: '',
+  })
   const [errorMessage, setErrorMessage] = useState(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -28,8 +32,28 @@ const App = () => {
     }
   }, [])
 
-  const handleBlogChange = event => {
-    setNewBlog(event.target.value)
+  const handleBlogChange = e => {
+    const value = e.target.value
+    setForm({
+      ...form,
+      [e.target.name]: value,
+    })
+  }
+
+  const addBlog = async e => {
+    e.preventDefault()
+    const blogObject = {
+      title: form.title,
+      author: form.author,
+      url: form.url,
+    }
+    const returnedBlog = await blogService.create(blogObject)
+    setBlogs(blogs.concat(returnedBlog))
+    setForm({
+      title: '',
+      author: '',
+      url: '',
+    })
   }
 
   const handleLogin = async event => {
@@ -88,8 +112,40 @@ const App = () => {
   )
 
   const blogForm = () => (
-    <form>
-      <input type="text" value={newBlog} onChange={handleBlogChange} />
+    <form onSubmit={addBlog}>
+      <div>
+        <label>
+          Title:
+          <input
+            type="text"
+            value={form.title}
+            name="title"
+            onChange={handleBlogChange}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Author:
+          <input
+            type="text"
+            value={form.author}
+            name="author"
+            onChange={handleBlogChange}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          URL:
+          <input
+            type="text"
+            value={form.url}
+            name="url"
+            onChange={handleBlogChange}
+          />
+        </label>
+      </div>
       <button type="submit">save</button>
     </form>
   )
