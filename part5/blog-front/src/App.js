@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Blog from './components/Blog'
-import { Success, Error } from './components/Notification'
+import * as Notifications from './components/Notification'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import './App.css'
@@ -165,8 +165,8 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
-      <Error message={errorMessage} />
-      <Success message={successMessage} />
+      <Notifications.Error message={errorMessage} />
+      <Notifications.Success message={successMessage} />
       {user === null ? (
         loginForm()
       ) : (
