@@ -5,12 +5,26 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.App {
-  text-align: center;
-}
-
 .error {
-  color: red;
+  width: 85vw;
+  margin: 0 auto 0.4em;
+  border: 3px solid indianred;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background: white;
+  text-align: center;
+  color: indianred;
+  font-weight: bold;
+}
+.success {
+  width: 85vw;
+  margin: 0 auto 0.4em;
+  border: 3px solid forestgreen;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background: white;
+  text-align: center;
+  color: forestgreen;
   font-weight: bold;
 }
 

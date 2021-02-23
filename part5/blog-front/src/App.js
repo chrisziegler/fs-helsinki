@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Blog from './components/Blog'
-import { Notification } from './components/Notification'
+import { Success, Error } from './components/Notification'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import './App.css'
@@ -13,6 +13,7 @@ const App = () => {
     url: '',
   })
   const [errorMessage, setErrorMessage] = useState(null)
+  const [successMessage, setSuccessMessage] = useState(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
@@ -42,18 +43,29 @@ const App = () => {
 
   const addBlog = async e => {
     e.preventDefault()
-    const blogObject = {
-      title: form.title,
-      author: form.author,
-      url: form.url,
+    try {
+      const blogObject = {
+        title: form.title,
+        author: form.author,
+        url: form.url,
+      }
+      const returnedBlog = await blogService.create(blogObject)
+      setBlogs(blogs.concat(returnedBlog))
+      setForm({
+        title: '',
+        author: '',
+        url: '',
+      })
+      setSuccessMessage(`a new blog ${returnedBlog.title} added`)
+      setTimeout(() => {
+        setSuccessMessage(null)
+      }, 5000)
+    } catch (exception) {
+      setErrorMessage('something went wrong')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
     }
-    const returnedBlog = await blogService.create(blogObject)
-    setBlogs(blogs.concat(returnedBlog))
-    setForm({
-      title: '',
-      author: '',
-      url: '',
-    })
   }
 
   const handleLogin = async event => {
@@ -73,7 +85,7 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setErrorMessage('wrong credentials')
+      setErrorMessage('wrong username or password')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -153,7 +165,8 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
-      <Notification message={errorMessage} />
+      <Error message={errorMessage} />
+      <Success message={successMessage} />
       {user === null ? (
         loginForm()
       ) : (
