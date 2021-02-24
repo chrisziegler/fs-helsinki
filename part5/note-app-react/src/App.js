@@ -149,7 +149,7 @@ const App = () => {
           </div>
         )}
 
-        <button className="toggle" onClick={() => setShowAll(!showAll)}>
+        <button onClick={() => setShowAll(!showAll)}>
           show {showAll ? 'important' : 'all'}
         </button>
         <ul>
