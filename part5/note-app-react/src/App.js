@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Note from './components/Note'
+import LoginForm from './components/LoginForm'
 import noteService from './services/notes'
 import { Notification } from './components/Notification'
 import loginService from './services/login'
@@ -23,6 +24,7 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
+  const [loginVisible, setLoginVisible] = useState(false)
 
   useEffect(() => {
     noteService.getAll().then(initialNotes => {
@@ -104,29 +106,32 @@ const App = () => {
       })
   }
 
-  const loginForm = () => (
-    <form onSubmit={handleLogin}>
+  const loginForm = () => {
+    const hideWhenVisible = { display: loginVisible ? 'none' : '' }
+    const showWhenVisible = { display: loginVisible ? '' : 'none' }
+
+    return (
       <div>
-        username
-        <input
-          type="text"
-          value={username}
-          name="Username"
-          onChange={({ target }) => setUsername(target.value)}
-        />
+        <div style={hideWhenVisible}>
+          <button onClick={() => setLoginVisible(true)}>log in</button>
+        </div>
+        <div style={showWhenVisible}>
+          <LoginForm
+            handleSubmit={handleLogin}
+            handleUsernameChange={({ target }) =>
+              setUsername(target.value)
+            }
+            handlePasswordChange={({ target }) =>
+              setPassword(target.value)
+            }
+            username={username}
+            password={password}
+          />
+          <button onClick={() => setLoginVisible(false)}>cancel</button>
+        </div>
       </div>
-      <div>
-        password
-        <input
-          type="password"
-          value={password}
-          name="Password"
-          onChange={({ target }) => setPassword(target.value)}
-        />
-      </div>
-      <button type="submit">login</button>
-    </form>
-  )
+    )
+  }
 
   const noteForm = () => (
     <form onSubmit={addNote}>
