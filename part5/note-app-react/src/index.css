@@ -53,12 +53,31 @@ ul {
 
 .error {
   color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: lightgrey;
   font-size: 1.2rem;
   border-style: solid;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.fade-out {
+  animation: fadeOut ease 5s;
+  -webkit-animation: fadeOut ease 5s;
+  -moz-animation: fadeOut ease 5s;
+  -o-animation: fadeOut ease 5s;
+  -ms-animation: fadeOut ease 5s;
+}
+@keyframes fadeOut {
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 ul li::before {
@@ -74,13 +93,14 @@ ul li::before {
 
 button {
   display: inline-block;
-  padding: 0.25em 1.2em;
+  padding: 0.14em 1.2em;
   border: 0.05em solid #000;
-  margin: 0.5em 0 0.5em 0;
+  margin: 0.5em 0 0.5em 0.4em;
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
   font-weight: 300;
   color: #222222;
   background-color: rgb(164, 211, 250);
