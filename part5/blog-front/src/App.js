@@ -102,13 +102,12 @@ const App = () => {
     const password = document.querySelector('#password')
     const type =
       password.getAttribute('type') === 'password' ? 'text' : 'password'
-    console.log(this)
     password.setAttribute('type', type)
     setRevealPassword(!revealPassword)
   }
 
   const loginForm = () => (
-    <form onSubmit={handleLogin}>
+    <form className="login-form" onSubmit={handleLogin}>
       <label>username</label>
       <input
         type="text"
@@ -145,7 +144,7 @@ const App = () => {
   )
 
   const blogForm = () => (
-    <form onSubmit={addBlog}>
+    <form className="blog-form" onSubmit={addBlog}>
       <label>Title:</label>
       <input
         type="text"
@@ -170,7 +169,9 @@ const App = () => {
         onChange={handleBlogChange}
       />
 
-      <button type="submit">save</button>
+      <button name="save" type="submit">
+        save
+      </button>
     </form>
   )
 
